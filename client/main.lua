@@ -20,6 +20,8 @@ CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/anontwt',  TranslateCap('twtanon_help'),  {{name = TranslateCap('generic_argument_name'), help = TranslateCap('generic_argument_help')}})
 	TriggerEvent('chat:addSuggestion', '/me',   TranslateCap('me_help'),   {{name = TranslateCap('generic_argument_name'), help = TranslateCap('generic_argument_help')}})
 	TriggerEvent('chat:addSuggestion', '/do',   TranslateCap('do_help'),   {{name = TranslateCap('generic_argument_name'), help = TranslateCap('generic_argument_help')}})
+	TriggerEvent('chat:addSuggestion', '/ad',   TranslateCap('ad_help'),   {{name = TranslateCap('generic_argument_name'), help = TranslateCap('generic_argument_help')}})
+
 end)
 
 AddEventHandler('onResourceStop', function(resource)
@@ -29,4 +31,5 @@ AddEventHandler('onResourceStop', function(resource)
 		TriggerEvent('chat:removeSuggestion', '/do')
 	end
 end)
+
 
