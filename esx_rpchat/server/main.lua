@@ -75,9 +75,11 @@ RegisterCommand('msg', function(playerId, args, user)
 	if GetPlayerName(tonumber(args[1])) then
 		local player = tonumber(args[1])
 		table.remove(args, 1)
+		local sendName = GetRealPlayerName(playerId)
+		local recName = GetRealPlayerName(playerId)
 
-		TriggerClientEvent('chat:addMessage', player, {args = {"^1PM from "..GetPlayerName(source).. "[" .. source .. "]: ^7" ..table.concat(args, " ")}, color = {255, 153, 0}})
-		TriggerClientEvent('chat:addMessage', playerId, {args = {"^1PM SEND TO "..GetPlayerName(player).. "[" .. player .. "]: ^7" ..table.concat(args, " ")}, color = {255, 153, 0}})
+		TriggerClientEvent('chat:addMessage', player, {args = {"^1PM from "..sendName.. "[" .. playerId .. "]: ^7" ..table.concat(args, " ")}, color = {255, 153, 0}})
+		TriggerClientEvent('chat:addMessage', playerId, {args = {"^1PM SEND TO "..recName.. "[" .. player .. "]: ^7" ..table.concat(args, " ")}, color = {255, 153, 0}})
 	else
 		TriggerClientEvent('chatMessage', playerId, "SYSTEM", {255, 0, 0}, "Specified Player Does Not Exist!")
 	end
@@ -107,7 +109,7 @@ function IsPlayerDead(playerId)
     local health = GetEntityHealth(playerPed)
     -- Check if the player's health is 0 or below
     if health <= 0 then 
-		print("Cant message when dead?")
+		print("Cant message when dead...")
 		return true
 	else
 		return false
